@@ -6,10 +6,15 @@ let capabilities = [{
     browserName: 'chrome',
     'goog:chromeOptions': {
         args: [
-            '--headless',
+            // '--headless',
             '--disable-gpu',
             '--window-size=1280,750',
-            '--hide-scrollbars'
+            '--hide-scrollbars',
+            '--no-sandbox', 
+            '--disable-dev-shm-usage', 
+            '--use-fake-ui-for-media-stream', 
+            '--use-fake-device-for-media-stream', 
+            '--allow-silent-push'
         ],
         prefs: {
             'directory_upgrade': true,
