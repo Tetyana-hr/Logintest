@@ -3,8 +3,8 @@ const login = new Login();
 
 
 const validUser = {
-    email: 'thrivas@netw.fr',
-    password: 'Qw123456',
+    email: '',
+    password: '',
   
 };
 
