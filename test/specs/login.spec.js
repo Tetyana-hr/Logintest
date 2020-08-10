@@ -4,8 +4,8 @@ const SipCall = require('../Calling/sipCall.js');
 const sipCall = new SipCall();
 
 const validUser = {
-    email: 'thrivas@netw.fr',
-    password: 'Qw123456',
+    email: '',
+    password: '',
   
 };
 
