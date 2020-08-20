@@ -7,8 +7,8 @@ const sipCall = new SipCall();
 // Move assert, expect, should to wdio.conf.js
 
 const validUser = {
-    email: 'thrivas@netw.fr',
-    password: 'Qw123456',
+    email: '',
+    password: '',
   
 };
 
