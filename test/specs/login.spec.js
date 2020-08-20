@@ -1,16 +1,10 @@
+const validUser = require('../../SecurityData/SecData.js'); 
 const Login = require('../pageObjects/Login.page.js');
 const login = new Login();
 const SipCall = require('../Calling/sipCall.js');
 const sipCall = new SipCall();
 
-
-// Move assert, expect, should to wdio.conf.js
-
-const validUser = {
-    email: '',
-    password: '',
-  
-};
+// Move assert, expect, should to wdio.conf
 
 const callPhone = {
     phone: '33970758487',
