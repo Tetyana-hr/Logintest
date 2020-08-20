@@ -3,9 +3,12 @@ const login = new Login();
 const SipCall = require('../Calling/sipCall.js');
 const sipCall = new SipCall();
 
+
+// Move assert, expect, should to wdio.conf.js
+
 const validUser = {
-    email: '',
-    password: '',
+    email: 'thrivas@netw.fr',
+    password: 'Qw123456',
   
 };
 
@@ -23,12 +26,20 @@ describe('Login Page and calling', function () {
         
     });
 
-  
-        // this.timeout(30000);
-        it('Make a call', function(){
-        sipCall.call(callPhone);            
+    it('should be title Client', function () {
+        let title = browser.getTitle();
+        assert.equal(title, 'Client'); // the same
+        expect(title).to.equal('Client'); // the same
+        title.should.equal('Client'); // the same
+        console.log('Title is: ' + title);
         browser.pause(10000);
-       
     });
+  
+        
+    //     it('Make a call', function(){
+    //     sipCall.call(callPhone);            
+    //     browser.pause(10000);
+       
+    // });
 
 })

@@ -217,6 +217,18 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function (capabilities, specs) {
+        // var chai = require('chai');  
+// var assert = chai.assert;    // Using Assert style
+// var expect = chai.expect;    // Using Expect style
+// var should = chai.should();  // Using Should style
+// The same
+// ||
+// V
+
+ assert = require('assert');
+ expect = require('chai').expect;
+ should = require('chai').should();
+
         global.downloadDir = browser.options.capabilities['goog:chromeOptions'].prefs['download.default_directory'];
 
         // turn on chrome downloads in headless mode

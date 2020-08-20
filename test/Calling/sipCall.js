@@ -12,6 +12,7 @@ class sipCall {
         this.$call.click();   
         browser.pause(5000);
         this.$callEnd.click();   
+      
      }
 }
 
