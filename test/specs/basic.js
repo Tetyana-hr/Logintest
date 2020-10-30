@@ -17,7 +17,7 @@ describe('Tests for client', () => {
     });
 
     it('should download app from Curtain', function () { 
-        const closeCurtain = $('[href="/desktop-app?os=windows"]') //(#download-app-toolbar button) //(button[data-cancel])  // ('data-cancel button')//$('button[type="submit"') 
+        const closeCurtain = $('[href="/desktop-app?os=windows"]')  
         browser.pause(4000);
         closeCurtain.click()
         browser.pause(4000);
@@ -36,11 +36,25 @@ describe('Tests for client', () => {
  
     });
 
-    it('should search only Test', function () { 
+    it('should search only Test', () => { 
      const inputSearchSet = $('#accounts-filter-form input') 
      inputSearchSet.setValue('Test') // перед добавлением чего-то очищает поле
      browser.pause(5000);
     });
+
+// Вытягиваем атрибут, выводим в консоль значение
+
+it('should get placeholder attribute', () => { 
+        const inputSearch = $('#accounts-filter-form input') 
+        let attr = inputSearch.getAttribute('placeholder')
+        console.log("Placeholder attribute is: " + attr) // outputs: Rechercher...
+
+        inputSearch.setValue('Tanya Test');
+        attr = inputSearch.getAttribute('value')
+        console.log("Value attribute is: " + attr) // outputs: Tanya Test
+ 
+    browser.pause(5000);
+   });
 
 })
 
