@@ -8,7 +8,7 @@ describe('Tests for client', () => {
         browser.url('./');
         browser.maximizeWindow();
     });
-    it('should have the right title', () => {
+    xit('should have the right title', () => {
         expect(browser).toHaveTitle('Client');
     })
 
@@ -17,7 +17,7 @@ describe('Tests for client', () => {
         browser.pause(10000);
     });
 
-    it('should download app from Curtain', function () {
+    xit('should download app from Curtain', function () {
         const closeCurtain = $('[href="/desktop-app?os=windows"]')
         browser.pause(4000);
         closeCurtain.click()
@@ -91,7 +91,7 @@ describe('Tests for client', () => {
            });
 
            //ВИдимость елементов, True если в полевидимости. False если надо скролить старницу, тоесть не в поле видимости. 
-           it('should detect if an element is visible', () => { 
+           xit('should detect if an element is visible', () => { 
             const buttonAddUser = $('[class="mobile-hidden tablet-hidden"]');
             let isVisibleButtonAddUser = buttonAddUser.isDisplayedInViewport();
             console.log("Is visible? " + isVisibleButtonAddUser);
@@ -105,6 +105,37 @@ describe('Tests for client', () => {
             console.log("Is ThreeDots visible withot scrolling? " + isVisibleThreeDots);
                         
            });
+// Включен/отключен/сфокусирован елемент - РОБОЧИЙ, НО ПЛОХОЙ ПРИМЕР
+           xit('should detect if an element is enabled and focused', () => { 
+            const openChat = $('[data-page="chat"]');
+
+            
+            browser.pause(4000);
+            openChat.click();
+            browser.pause(4000);
+            const inputChat = $('#chat-textarea');
+            let isEnabled = inputChat.isEnabled();
+            console.log("Is enabled? " + isEnabled); // Выведет true, так как в коде нет Disabled
+            console.log("Is focused? " + inputChat.isFocused()) // outputs false
+            let chanal = $('[class="chat-list-item"]');
+            chanal.click();
+            browser.pause(4000)
+            console.log("Is focused? " + inputChat.isFocused()) // outputs true
+            browser.pause(4000)
+           }); 
+
+           // Проскролить страницу
+
+           it('should move to element', () => { 
+            const blockQueues = $('#queues');
+            browser.pause(4000);
+            blockQueues.scrollIntoView();
+            browser.waitUntil(() =>
+                $('#queues').isDisplayed() === true,
+                { timeout: 5000, timeoutMsg: "Waiting Error", interval: 500 });
+            // browser.pause(4000);
+        }); 
+        
 
 })
 
