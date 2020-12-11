@@ -126,7 +126,7 @@ describe('Tests for client', () => {
 
            // Проскролить страницу
 
-           it('should move to element', () => { 
+           xit('should move to element', () => { 
             const blockQueues = $('#queues');
             browser.pause(4000);
             blockQueues.scrollIntoView();
@@ -136,6 +136,24 @@ describe('Tests for client', () => {
             // browser.pause(4000);
         }); 
         
+        xit('shoud save a screenShot of the browser view', function (){
+            const blockQueues = $('#queues');
+            blockQueues.saveScreenshot('screenshot.png');
+        });
+
+        it ('shoud switch to another wondow for centrex opening', () => {
+            browser.newWindow('https://centrex-test2.netw.fr')
+            browser.pause(2000);
+
+            //switch back via url match
+            browser.switchWindow('https://client2.netw.fr/')
+            browser.pause(2000);
+
+            //or switch back via title mach
+            browser.switchWindow('Client')
+            browser.pause(2000);
+ 
+        })
 
 })
 
