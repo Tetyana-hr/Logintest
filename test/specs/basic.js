@@ -3,6 +3,8 @@ const Login = require('../pageObjects/Login.page.js');
 const login = new Login();
 const assert = require('assert');
 
+//describe.only выполнить
+//describe.skip пропустить
 describe('Tests for client', () => {
     beforeEach(function () {
         browser.url('./');
@@ -11,7 +13,9 @@ describe('Tests for client', () => {
     xit('should have the right title', () => {
         expect(browser).toHaveTitle('Client');
     })
-
+//it.only можно использовать, что б запустить только  этот тест
+//пример  it.only('should let you login with valid credentials', function () .....
+//it.skip пропустить тест
     it('should let you login with valid credentials', function () {
         login.login(validUser);
         browser.pause(10000);
@@ -141,7 +145,7 @@ describe('Tests for client', () => {
             blockQueues.saveScreenshot('screenshot.png');
         });
 
-        it ('shoud switch to another wondow for centrex opening', () => {
+        xit ('shoud switch to another wondow for centrex opening', () => {
             browser.newWindow('https://centrex-test2.netw.fr')
             browser.pause(2000);
 
@@ -154,6 +158,24 @@ describe('Tests for client', () => {
             browser.pause(2000);
  
         })
+
+// wait load an element
+
+        xit('should wait until', () => {
+            browser.waitUntil(() => {
+                return $('#queues').isDisplayed();
+            }, 5000, 'queues is not displayed');
+        });
+
+        xit('should get html for certain elements', () => {
+
+            let outerHtml = $('[src="/profile/logo"]').getHTML();
+            console.log('outerHtml : ' + outerHtml);
+
+            let innerHtml = $('[src="/profile/logo"]').getHTML(false);
+            console.log('innerHtml : ' + innerHtml);
+        });
+
 
 })
 
