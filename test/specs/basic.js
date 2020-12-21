@@ -1,6 +1,7 @@
 const validUser = require('../../SecurityData/SecData.js');
 const Login = require('../pageObjects/Login.page.js');
 const login = new Login();
+const topBar = require('../pageObjects/topbar.js');
 const assert = require('assert');
 
 //describe.only выполнить
@@ -17,11 +18,11 @@ describe('Tests for client', () => {
 //пример  it.only('should let you login with valid credentials', function () .....
 //it.skip пропустить тест
     it('should let you login with valid credentials', function () {
-        login.login(validUser);
+        login.loginCred(validUser);
         browser.pause(10000);
     });
 
-    xit('should download app from Curtain', function () {
+    it('should download app from Curtain', function () {
         const closeCurtain = $('[href="/desktop-app?os=windows"]')
         browser.pause(4000);
         closeCurtain.click()
@@ -41,9 +42,8 @@ describe('Tests for client', () => {
 
     });
 
-    xit('should search only Test', () => {
-        const inputSearchSet = $('#accounts-filter-form input')
-        inputSearchSet.setValue('Test') // перед добавлением чего-то очищает поле
+    it('should search only Test', () => {
+        topBar.inputSearch.setValue('Test'); 
         browser.pause(5000);
     });
 
