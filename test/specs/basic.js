@@ -29,33 +29,32 @@ describe('Tests for client', () => {
         browser.pause(4000);
     });
 
-    xit('should search value Tanya and Tanya Test', () => {
-        let inputSearch = $('#accounts-filter-form input') // locator id, identifier, name, и уточняющие фильтры link, dom, 
-        // xpath, css, ui 
-        inputSearch.addValue('Tanya')  // не очищает предыдущее значение
+    it('should search value Tanya and Tanya Test', () => {
+        topBar.inputSearch.addValue('Tanya')  // не очищает предыдущее значение
         browser.pause(5000);
-        inputSearch.addValue(' Test')
+        topBar.inputSearch.addValue(' Test')
         browser.pause(5000);
 
-        value = inputSearch.getValue()
+        value = topBar.inputSearch.getValue()
         assert(value === 'Tanya Test') // true
 
     });
 
     it('should search only Test', () => {
-        topBar.inputSearch.setValue('Test'); 
+        topBar.inputSearch.setValue('Test'); // перед добавлением чего-то очищает поле
+        browser.pause(5000);
+        topBar.inputSearchSet('Tanya');
         browser.pause(5000);
     });
 
     // Вытягиваем атрибут, выводим в консоль значение
 
     xit('should get placeholder attribute', () => {
-        const inputSearch = $('#accounts-filter-form input')
-        let attr = inputSearch.getAttribute('placeholder')
+        let attr = topBar.inputSearch.getAttribute('placeholder')
         console.log("Placeholder attribute is: " + attr) // outputs: Rechercher...
 
-        inputSearch.setValue('Tanya Test');
-        attr = inputSearch.getAttribute('value')
+        topBar.inputSearch.setValue('Tanya Test');
+        attr = topBar.inputSearch.getAttribute('value')
         console.log("Value attribute is: " + attr) // outputs: Tanya Test
 
         browser.pause(5000);
